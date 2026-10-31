@@ -10,8 +10,6 @@ React + Express + MongoDB interview management platform with recruiter/interview
 - Interview feedback scorecards (technical, communication, problem solving, comments and recommendation)
 - Optional Gemini AI feedback summary (human decision remains authoritative)
 - Analytics: interview counts, candidate stages, feedback average and interviewer workload
-- Email confirmations/updates and scheduled 30-minute reminders (SMTP required)
-- Docker image and GitHub Actions test/build workflow
 
 ## Requirements
 Node.js 22+, npm, MongoDB Atlas/local MongoDB. SMTP and Gemini are optional.
@@ -19,24 +17,7 @@ Node.js 22+, npm, MongoDB Atlas/local MongoDB. SMTP and Gemini are optional.
 ## Environment
 Create `backend/.env` (never commit it):
 
-```env
-PORT=5000
-MONGODB_URI=mongodb+srv://<user>:<encoded-password>@<cluster>/<database>
-JWT_SECRET=replace-with-a-random-secret-at-least-24-characters
-JWT_EXPIRES_IN=1d
-FRONTEND_URL=http://localhost:5173
-BOOTSTRAP_RECRUITER_NAME=Recruiter Admin
-BOOTSTRAP_RECRUITER_EMAIL=admin@example.com
-BOOTSTRAP_RECRUITER_PASSWORD=use-a-unique-password-of-at-least-12-characters
-SMTP_HOST=smtp.example.com
-SMTP_PORT=587
-SMTP_SECURE=false
-SMTP_USER=your-smtp-user
-SMTP_PASS=your-smtp-password
-EMAIL_FROM=Interview Scheduler <no-reply@example.com>
-REMINDER_INTERVAL_MINUTES=5
-GEMINI_API_KEY=optional-gemini-api-key
-```
+
 After first recruiter creation, remove the bootstrap email/password from the environment.
 
 ## Local development
@@ -64,12 +45,6 @@ npm run build
 npm start
 ```
 
-## Docker
-
-```bash
-docker build -t interview-scheduler .
-docker run --env-file backend/.env -p 5000:5000 interview-scheduler
-```
 
 ## Render deployment
 1. Push the project root to GitHub (do not commit `.env`, `node_modules`, or secrets).
