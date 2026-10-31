@@ -1,9 +1,0 @@
-{
-
-  "dependencies": {
-    "path": "^0.12.7",
-    "type": "module"
-
-  }
-
-}
